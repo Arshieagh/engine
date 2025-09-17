@@ -32,7 +32,7 @@ Dependencies:
   ```bash
   pip install streamlit python-chess
 ```  
-Build the Engine
+## Build the Engine
 
 Compile your Rust chess engine into a binary:
   ```bash
@@ -51,21 +51,21 @@ This will start a local server (usually at http://localhost:8501).
 ## Debugging the Engine
 Streamlit is not just a GUI—it’s also a debugger console for your engine.
 What you can montior:
-	•	Raw UCI transcript: every command sent, every line received.
-	•	Search telemetry from info lines:
-	•	Depth / selective depth
-	•	Nodes searched / NPS
-	•	Score (centipawns, mate-in-N)
-	•	Principal variation (PV)
-	•	Position state: FEN, move list, side to move.
-	•	Engine options: hash size, threads, etc.
+- Raw UCI transcript: every command sent, every line received.
+- Search telemetry from info lines:
+- Depth / selective depth
+- Nodes searched / NPS
+- Score (centipawns, mate-in-N)
+- Principal variation (PV)
+- Position state: FEN, move list, side to move.
+- Engine options: hash size, threads, etc.
 
 Typical workflows:
-	1.	Perft checks → validate move generation with known counts.
-	2.	Fixed-depth search → run the same FEN at depth N and compare PVs/scores for stability.
-	3.	Edge cases → test castling, promotions, en-passant, stalemates.
-	4.	Time management → check if go movetime is respected.
-	5.	Crash triage → if bestmove never arrives, inspect protocol transcript for missing flush/newline.
+1. Perft checks → validate move generation with known counts.
+2. Fixed-depth search → run the same FEN at depth N and compare PVs/scores for stability.
+3. Edge cases → test castling, promotions, en-passant, stalemates.
+4. Time management → check if go movetime is respected.
+5. Crash triage → if bestmove never arrives, inspect protocol transcript for missing flush/newline.
 
  ## Resources
  [UCI Protocol Specification](https://gist.github.com/aliostad/f6c19dba0f5a1c0e6f0c)
