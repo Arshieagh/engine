@@ -8,20 +8,21 @@ This project combines a **chess engine written in Rust** (speaking the [UCI prot
 ---
 
 ## Architecture
+```mermaid
 flowchart LR
     subgraph Browser["Web Browser"]
         UI["Streamlit UI (Python)"]
     end
 
     subgraph Py["Streamlit Server (Python)"]
-        Ctl["UCI Controller (pipes/queues)"]
-        SM["Session State (st.session_state)"]
+        Ctl["UCI Controller"]
+        State["Session State"]
         Log["UCI Transcript & Telemetry"]
     end
 
     subgraph Rust["Rust UCI Engine (binary)"]
-        Core["Search + Eval Core"]
-        UCI["UCI I/O (stdin/stdout)"]
+        Core["Search + Eval"]
+        UCI["UCI Protocol (stdin/stdout)"]
     end
 
     UI <--> Ctl
@@ -29,10 +30,11 @@ flowchart LR
     UCI --> Core
     Core --> UCI
 
-    Ctl <--> SM
+    Ctl <--> State
     Ctl -->|send: uci/isready/position/go/stop| UCI
     UCI -->|recv: uciok/readyok/info/bestmove| Log
     Log --> UI
+```
 - **Communication:**  
   - The GUI launches the Rust engine as a subprocess.  
   - Messages are exchanged in UCI format (`uci`, `isready`, `position`, `go`, `info`, `bestmove`, …).  
