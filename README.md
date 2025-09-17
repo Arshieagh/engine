@@ -15,8 +15,7 @@ This project combines a **chess engine written in Rust** (speaking the [UCI prot
 
 ```mermaid
 graph TD;
-    Streamlit GUI;
-    Rust Engine ;
+    Streamlit GUI --> Rust Engine
 ```
 - **Communication:**  
   - The GUI launches the Rust engine as a subprocess.  
