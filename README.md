@@ -12,6 +12,12 @@ This project combines a **chess engine written in Rust** (speaking the [UCI prot
 |   Streamlit GUI   |  <––––––––––––––––––––>  |   Rust Engine    |
 |  (Python server)  |                          |  (binary, UCI)   |
   +—————–——————–+                                 +—————–——————–+
+
+```mermaid
+graph TD;
+    Streamlit GUI;
+    Rust Engine ;
+```
 - **Communication:**  
   - The GUI launches the Rust engine as a subprocess.  
   - Messages are exchanged in UCI format (`uci`, `isready`, `position`, `go`, `info`, `bestmove`, …).  
@@ -68,8 +74,8 @@ Typical workflows:
 5. Crash triage → if bestmove never arrives, inspect protocol transcript for missing flush/newline.
 
  ## Resources
- [UCI Protocol Specification](https://gist.github.com/aliostad/f6c19dba0f5a1c0e6f0c)
- [python-chess docs](https://python-chess.readthedocs.io/en/latest/)
- [Streamlit documentation](https://docs.streamlit.io/)
+- [UCI Protocol Specification](https://gist.github.com/aliostad/f6c19dba0f5a1c0e6f0c)
+- [python-chess docs](https://python-chess.readthedocs.io/en/latest/)
+- [Streamlit documentation](https://docs.streamlit.io/)
 
  
